@@ -20,11 +20,11 @@ class FlickerView(QWidget):
         self.cb2 = QComboBox(self)
         self.cb2.move(20, 20)
         self.cb2.setMinimumWidth(150)
-        self.cb2.currentIndexChanged.connect(self.selectionChange2)
+        self.cb2.currentIndexChanged.connect(self.changeSelectedLight)
         
         self.btn = QPushButton(self)
         self.btn.setText('boop')
-        self.btn.clicked.connect(self.pushButton)
+        self.btn.clicked.connect(self.generateRandomKey)
         self.btn.move(20, 50)
         
         self.btn2 = QPushButton(self)
@@ -32,9 +32,24 @@ class FlickerView(QWidget):
         self.btn2.clicked.connect(self.updateSelectedLights)
         self.btn2.move(220, 20)
         
+        self.btn3 = QPushButton(self)
+        self.btn3.setText('Delete Key')
+        self.btn3.clicked.connect(self.deleteKey)
+        self.btn3.move(70, 50)
+        
         self.table = QTableWidget(self)
         self.table.move(20, 90)
         self.table.cellChanged.connect(self.tableChanged)
+        
+        self.frameRangeText = QTextEdit(self)
+        self.frameRangeText.move(300, 20)
+        self.frameRangeText.setGeometry(300, 20, 70, 25)
+        
+        self.btn3 = QPushButton(self)
+        self.btn3.setText('Load Keys')
+        self.btn3.move(400, 20)
+        self.btn3.clicked.connect(self.loadKeys)
+      
         
         self.keys = []
         
@@ -55,19 +70,23 @@ class FlickerView(QWidget):
             for pChild in children:
                 if nodeType(str(pChild)) in flickerUtils.exposureDict:
                     self.cb2.addItem(str(pChild))
-        self.cb2.currentIndexChanged.connect(self.selectionChange2)
+        self.cb2.currentIndexChanged.connect(self.changeSelectedLight)
 
     
-    def selectionChange2(self, i):
+    def changeSelectedLight(self, i):
         lightName = self.cb2.itemText(self.cb2.currentIndex())
         lightType = nodeType(lightName)
         exposureType = flickerUtils.exposureDict[lightType]
-        self.loadTable(lightName, exposureType)
+        
+        if self.keyRange is not None:
+            self.loadTable(lightName, exposureType)
+        else:
+            print('boo')
         
     
     def loadTable(self, lightName, exposureType):
         self.table.cellChanged.disconnect()
-        keys = keyframe(lightName + '.' + exposureType, time = (0, 10), query = True, vc = True, tc = True)
+        keys = keyframe(lightName + '.' + exposureType, time = (self.keyRange.start, self.keyRange.end), query = True, vc = True, tc = True)
         self.keys = keys
         self.table.clear()
         self.table.setColumnCount(2)
@@ -104,22 +123,48 @@ class FlickerView(QWidget):
                 self.keys[row] = newTuple  
                  
             except ValueError:
-                messageBox = QMessageBox(self)
-                messageBox.setText("Please enter a float.")
-                messageBox.setIcon(QMessageBox.Critical)
-                messageBox.setStandardButtons(QMessageBox.Ok)
-                messageBox.show()
+                self.createErrorPopup()
                 self.table.item(row, column).setText(str(self.keys[row][column]))
-                     
+      
     
-    def pushButton(self):
+    def generateRandomKey(self):
         lightName = self.cb2.itemText(self.cb2.currentIndex())
         lightType = nodeType(lightName)
         e = random.random()
         t = random.randint(1,10)
         flickerUtils.setExposureKeyFrame(lightName, lightType, e, t)
+        exposureType = flickerUtils.exposureDict[lightType]
+        self.loadTable(lightName, exposureType)
 
     
+    def createErrorPopup(self, str = "Please enter a valid value."):
+        messageBox = QMessageBox(self)
+        messageBox.setText(str)
+        messageBox.setIcon(QMessageBox.Critical)
+        messageBox.setStandardButtons(QMessageBox.Ok)
+        messageBox.show()
     
     
+    def deleteKey(self):
+        #rendundant code with tablechanged
+        keyRow = self.table.currentItem().row()
+        lightName = self.cb2.itemText(self.cb2.currentIndex())
+        lightType = nodeType(lightName)
+        exposureType = flickerUtils.exposureDict[lightType]  
+        oldTime = (self.keys[keyRow][0])              
+        cutKey(lightName + '.' + exposureType, time = (oldTime, oldTime), option = 'keys')
+        self.loadTable(lightName, exposureType)
+        
+    def loadKeys(self):
+        try:
+            keyText = self.frameRangeText.document().toPlainText()
+            splitList = keyText.split(" ")
+            keyStart = float(splitList[0])
+            keyEnd = float(splitList[1])
+            self.keyRange = flickerUtils.Range(keyStart, keyEnd)
+            #self.changeSelectedLight(0) #0 doesnt matter
+        except ValueError:
+            self.createErrorPopup()  
+        
+        
         
