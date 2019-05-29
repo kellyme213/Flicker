@@ -20,7 +20,7 @@ class FlickerView(QWidget):
         self.cb2 = QComboBox(self)
         self.cb2.move(20, 20)
         self.cb2.setMinimumWidth(150)
-        self.cb2.currentIndexChanged.connect(self.changeSelectedLight)
+        self.cb2.activated.connect(self.changeSelectedLight)
         
         self.btn = QPushButton(self)
         self.btn.setText('boop')
@@ -61,7 +61,7 @@ class FlickerView(QWidget):
     
 
     def updateSelectedLights(self):
-        self.cb2.currentIndexChanged.disconnect()
+        self.cb2.activated.disconnect()
         self.cb2.clear()
         newLights = []
         potentialLights = ls(sl=True)
@@ -70,7 +70,7 @@ class FlickerView(QWidget):
             for pChild in children:
                 if nodeType(str(pChild)) in flickerUtils.exposureDict:
                     self.cb2.addItem(str(pChild))
-        self.cb2.currentIndexChanged.connect(self.changeSelectedLight)
+        self.cb2.activated.connect(self.changeSelectedLight)
 
     
     def changeSelectedLight(self, i):
@@ -78,10 +78,11 @@ class FlickerView(QWidget):
         lightType = nodeType(lightName)
         exposureType = flickerUtils.exposureDict[lightType]
         
-        if self.keyRange is not None:
+        try:
             self.loadTable(lightName, exposureType)
-        else:
-            print('boo')
+        except AttributeError:
+            self.createErrorPopup("Please enter a valid key range.")
+            self.table.cellChanged.connect(self.tableChanged)
         
     
     def loadTable(self, lightName, exposureType):
@@ -107,7 +108,6 @@ class FlickerView(QWidget):
         exposureItem = self.table.item(row, 1)
         
         if (timeItem is not None) and (exposureItem is not None):
-            #print(row, column)
             try:
                 time = float(timeItem.text())
                 exposure = float(exposureItem.text())
@@ -124,7 +124,7 @@ class FlickerView(QWidget):
                  
             except ValueError:
                 self.createErrorPopup()
-                self.table.item(row, column).setText(str(self.keys[row][column]))
+                self.table.item(row, column).setText(str(self.keys[row][column]))            
       
     
     def generateRandomKey(self):
@@ -162,7 +162,6 @@ class FlickerView(QWidget):
             keyStart = float(splitList[0])
             keyEnd = float(splitList[1])
             self.keyRange = flickerUtils.Range(keyStart, keyEnd)
-            #self.changeSelectedLight(0) #0 doesnt matter
         except ValueError:
             self.createErrorPopup()  
         
