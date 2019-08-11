@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Form</class>
+ <widget class="QWidget" name="Form">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>555</width>
+    <height>408</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Flicker</string>
+  </property>
+  <widget class="QPushButton" name="generateKeysButton">
+   <property name="geometry">
+    <rect>
+     <x>350</x>
+     <y>370</y>
+     <width>112</width>
+     <height>32</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Generate Keys</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="randomKeyButton">
+   <property name="geometry">
+    <rect>
+     <x>440</x>
+     <y>280</y>
+     <width>112</width>
+     <height>32</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Random Key</string>
+   </property>
+  </widget>
+  <widget class="QComboBox" name="lightComboBox">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>40</y>
+     <width>151</width>
+     <height>32</height>
+    </rect>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>16</width>
+     <height>16</height>
+    </size>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="loadLightsButton">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>10</y>
+     <width>112</width>
+     <height>32</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Load Lights</string>
+   </property>
+  </widget>
+  <widget class="QTableWidget" name="keyTableWidget">
+   <property name="geometry">
+    <rect>
+     <x>160</x>
+     <y>10</y>
+     <width>381</width>
+     <height>261</height>
+    </rect>
+   </property>
+   <property name="columnCount">
+    <number>2</number>
+   </property>
+   <attribute name="horizontalHeaderVisible">
+    <bool>true</bool>
+   </attribute>
+   <attribute name="horizontalHeaderCascadingSectionResizes">
+    <bool>false</bool>
+   </attribute>
+   <attribute name="horizontalHeaderStretchLastSection">
+    <bool>true</bool>
+   </attribute>
+   <column>
+    <property name="text">
+     <string>Keyframe</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>Exposure</string>
+    </property>
+   </column>
+  </widget>
+  <widget class="QLabel" name="keyRangeLabel">
+   <property name="geometry">
+    <rect>
+     <x>160</x>
+     <y>285</y>
+     <width>81</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Key Range:</string>
+   </property>
+  </widget>
+  <widget class="QTextEdit" name="keyRangeTextEdit">
+   <property name="geometry">
+    <rect>
+     <x>280</x>
+     <y>280</y>
+     <width>70</width>
+     <height>25</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLabel" name="exposureRange1Label">
+   <property name="geometry">
+    <rect>
+     <x>160</x>
+     <y>315</y>
+     <width>121</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Exposure Range 1: </string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="exposureRange2Label">
+   <property name="geometry">
+    <rect>
+     <x>160</x>
+     <y>345</y>
+     <width>121</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Exposure Range 2:</string>
+   </property>
+  </widget>
+  <widget class="QTextEdit" name="exposureRange1TextEdit">
+   <property name="geometry">
+    <rect>
+     <x>280</x>
+     <y>310</y>
+     <width>70</width>
+     <height>25</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QTextEdit" name="exposureRange2TextEdit">
+   <property name="geometry">
+    <rect>
+     <x>280</x>
+     <y>340</y>
+     <width>70</width>
+     <height>25</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QTextEdit" name="exposureRange2TextEdit_2">
+   <property name="geometry">
+    <rect>
+     <x>480</x>
+     <y>340</y>
+     <width>70</width>
+     <height>25</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QTextEdit" name="exposureRange1TextEdit_2">
+   <property name="geometry">
+    <rect>
+     <x>480</x>
+     <y>310</y>
+     <width>70</width>
+     <height>25</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLabel" name="timeRange2Label">
+   <property name="geometry">
+    <rect>
+     <x>360</x>
+     <y>345</y>
+     <width>121</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Time Range 2:</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="timeRange1Label">
+   <property name="geometry">
+    <rect>
+     <x>360</x>
+     <y>315</y>
+     <width>121</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Time Range 1: </string>
+   </property>
+  </widget>
+  <widget class="QTextEdit" name="biasTextEdit">
+   <property name="geometry">
+    <rect>
+     <x>280</x>
+     <y>370</y>
+     <width>70</width>
+     <height>25</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLabel" name="biasLabel">
+   <property name="geometry">
+    <rect>
+     <x>160</x>
+     <y>375</y>
+     <width>121</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Bias:</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="loadKeysButton">
+   <property name="geometry">
+    <rect>
+     <x>350</x>
+     <y>280</y>
+     <width>91</width>
+     <height>32</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Load Keys</string>
+   </property>
+  </widget>
+  <widget class="QCheckBox" name="overwriteCheckBox">
+   <property name="geometry">
+    <rect>
+     <x>465</x>
+     <y>375</y>
+     <width>86</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Overwrite</string>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
