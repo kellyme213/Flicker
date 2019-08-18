@@ -7,8 +7,72 @@
     <x>0</x>
     <y>0</y>
     <width>555</width>
-    <height>408</height>
+    <height>454</height>
    </rect>
+  </property>
+  <property name="palette">
+   <palette>
+    <active>
+     <colorrole role="Base">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>30</red>
+        <green>30</green>
+        <blue>30</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Window">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>67</red>
+        <green>68</green>
+        <blue>70</blue>
+       </color>
+      </brush>
+     </colorrole>
+    </active>
+    <inactive>
+     <colorrole role="Base">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>30</red>
+        <green>30</green>
+        <blue>30</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Window">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>67</red>
+        <green>68</green>
+        <blue>70</blue>
+       </color>
+      </brush>
+     </colorrole>
+    </inactive>
+    <disabled>
+     <colorrole role="Base">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>67</red>
+        <green>68</green>
+        <blue>70</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Window">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>67</red>
+        <green>68</green>
+        <blue>70</blue>
+       </color>
+      </brush>
+     </colorrole>
+    </disabled>
+   </palette>
   </property>
   <property name="windowTitle">
    <string>Flicker</string>
@@ -16,8 +80,8 @@
   <widget class="QPushButton" name="generateKeysButton">
    <property name="geometry">
     <rect>
-     <x>350</x>
-     <y>370</y>
+     <x>210</x>
+     <y>400</y>
      <width>112</width>
      <height>32</height>
     </rect>
@@ -29,7 +93,7 @@
   <widget class="QPushButton" name="randomKeyButton">
    <property name="geometry">
     <rect>
-     <x>440</x>
+     <x>310</x>
      <y>280</y>
      <width>112</width>
      <height>32</height>
@@ -43,8 +107,8 @@
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>40</y>
-     <width>151</width>
+     <y>50</y>
+     <width>150</width>
      <height>32</height>
     </rect>
    </property>
@@ -60,7 +124,7 @@
     <rect>
      <x>10</x>
      <y>10</y>
-     <width>112</width>
+     <width>110</width>
      <height>32</height>
     </rect>
    </property>
@@ -71,10 +135,10 @@
   <widget class="QTableWidget" name="keyTableWidget">
    <property name="geometry">
     <rect>
-     <x>160</x>
+     <x>170</x>
      <y>10</y>
-     <width>381</width>
-     <height>261</height>
+     <width>370</width>
+     <height>250</height>
     </rect>
    </property>
    <property name="columnCount">
@@ -103,7 +167,7 @@
   <widget class="QLabel" name="keyRangeLabel">
    <property name="geometry">
     <rect>
-     <x>160</x>
+     <x>10</x>
      <y>285</y>
      <width>81</width>
      <height>16</height>
@@ -116,18 +180,24 @@
   <widget class="QTextEdit" name="keyRangeTextEdit">
    <property name="geometry">
     <rect>
-     <x>280</x>
+     <x>130</x>
      <y>280</y>
      <width>70</width>
      <height>25</height>
     </rect>
    </property>
+   <property name="whatsThis">
+    <string/>
+   </property>
+   <property name="acceptRichText">
+    <bool>true</bool>
+   </property>
   </widget>
   <widget class="QLabel" name="exposureRange1Label">
    <property name="geometry">
     <rect>
-     <x>160</x>
-     <y>315</y>
+     <x>10</x>
+     <y>325</y>
      <width>121</width>
      <height>16</height>
     </rect>
@@ -139,8 +209,8 @@
   <widget class="QLabel" name="exposureRange2Label">
    <property name="geometry">
     <rect>
-     <x>160</x>
-     <y>345</y>
+     <x>10</x>
+     <y>365</y>
      <width>121</width>
      <height>16</height>
     </rect>
@@ -152,8 +222,8 @@
   <widget class="QTextEdit" name="exposureRange1TextEdit">
    <property name="geometry">
     <rect>
-     <x>280</x>
-     <y>310</y>
+     <x>130</x>
+     <y>320</y>
      <width>70</width>
      <height>25</height>
     </rect>
@@ -162,28 +232,28 @@
   <widget class="QTextEdit" name="exposureRange2TextEdit">
    <property name="geometry">
     <rect>
-     <x>280</x>
-     <y>340</y>
+     <x>130</x>
+     <y>360</y>
      <width>70</width>
      <height>25</height>
     </rect>
    </property>
   </widget>
-  <widget class="QTextEdit" name="exposureRange2TextEdit_2">
+  <widget class="QTextEdit" name="timeRange2TextEdit">
    <property name="geometry">
     <rect>
-     <x>480</x>
-     <y>340</y>
+     <x>330</x>
+     <y>360</y>
      <width>70</width>
      <height>25</height>
     </rect>
    </property>
   </widget>
-  <widget class="QTextEdit" name="exposureRange1TextEdit_2">
+  <widget class="QTextEdit" name="timeRange1TextEdit">
    <property name="geometry">
     <rect>
-     <x>480</x>
-     <y>310</y>
+     <x>330</x>
+     <y>320</y>
      <width>70</width>
      <height>25</height>
     </rect>
@@ -192,8 +262,8 @@
   <widget class="QLabel" name="timeRange2Label">
    <property name="geometry">
     <rect>
-     <x>360</x>
-     <y>345</y>
+     <x>210</x>
+     <y>365</y>
      <width>121</width>
      <height>16</height>
     </rect>
@@ -205,8 +275,8 @@
   <widget class="QLabel" name="timeRange1Label">
    <property name="geometry">
     <rect>
-     <x>360</x>
-     <y>315</y>
+     <x>210</x>
+     <y>325</y>
      <width>121</width>
      <height>16</height>
     </rect>
@@ -218,8 +288,8 @@
   <widget class="QTextEdit" name="biasTextEdit">
    <property name="geometry">
     <rect>
-     <x>280</x>
-     <y>370</y>
+     <x>130</x>
+     <y>400</y>
      <width>70</width>
      <height>25</height>
     </rect>
@@ -228,8 +298,8 @@
   <widget class="QLabel" name="biasLabel">
    <property name="geometry">
     <rect>
-     <x>160</x>
-     <y>375</y>
+     <x>10</x>
+     <y>405</y>
      <width>121</width>
      <height>16</height>
     </rect>
@@ -241,7 +311,7 @@
   <widget class="QPushButton" name="loadKeysButton">
    <property name="geometry">
     <rect>
-     <x>350</x>
+     <x>210</x>
      <y>280</y>
      <width>91</width>
      <height>32</height>
@@ -254,14 +324,27 @@
   <widget class="QCheckBox" name="overwriteCheckBox">
    <property name="geometry">
     <rect>
-     <x>465</x>
-     <y>375</y>
-     <width>86</width>
+     <x>330</x>
+     <y>405</y>
+     <width>85</width>
      <height>20</height>
     </rect>
    </property>
    <property name="text">
     <string>Overwrite</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="deleteKeyButton">
+   <property name="geometry">
+    <rect>
+     <x>430</x>
+     <y>280</y>
+     <width>90</width>
+     <height>32</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Delete Key</string>
    </property>
   </widget>
  </widget>
